@@ -2,9 +2,9 @@ name: Debug CI
 
 on:
   push:
-    paths:
-      - "001/**"
-    branches:
+    paths: 
+      - '001/**'
+    branches: 
       - main
       - develop
 
@@ -15,9 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: List files
+      - name: Debug Info
         run: |
-          echo "Files changed in 001/:"
-          ls -la 001/
-          echo "Working directory:"
+          echo "=== DEBUG WORKFLOW EJECUTÁNDOSE ==="
+          echo "Rama actual: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Archivos en 001/:"
+          ls -la 001/ || echo "Directorio 001/ no encontrado"
+          echo "Directorio de trabajo:"
           pwd
+          echo "Archivos modificados:"
+          git diff --name-only HEAD~1 HEAD || echo "No se puede obtener diff"
