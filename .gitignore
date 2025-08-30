@@ -25,6 +25,9 @@ env/
 venv/
 Pipfile.lock
 poetry.lock
+htmlcov/
+/.coverage
+**/.coverage
 
 # ==========================
 # Logs

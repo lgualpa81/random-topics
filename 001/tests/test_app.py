@@ -24,9 +24,7 @@ def test_suma(client):
 def test_saludo(client):
     r = client.get('/saludo/coder')
     data = json.loads(r.data)
-    print("-----")
-    print(r.get_data(as_text=True))
-    print("-----")
+
     assert r.status_code == 200
     assert data['saludo'] == '¡Hola coder!'
     assert 'Hola coder' in r.get_data(as_text=True)

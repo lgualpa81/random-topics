@@ -28,6 +28,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Verificar app corriendo
+        run: |
+          timeout 10 python app.py &
+          sleep 5
+          curl -f http://localhost:5000/health
+
       - name: execute test
         run: |
           pytest tests/ -v
