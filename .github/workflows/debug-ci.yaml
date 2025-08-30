@@ -1,0 +1,23 @@
+name: Debug CI
+
+on:
+  push:
+    paths: 
+      - '001/**'
+    branches: 
+      - main
+      - develop
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: List files
+        run: |
+          echo "Files changed in 001/:"
+          ls -la 001/
+          echo "Working directory:"
+          pwd
