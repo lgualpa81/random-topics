@@ -2,8 +2,8 @@ name: Debug CI
 
 on:
   push:
-    # paths: 
-    #   - '001/**'
+    paths: 
+      - '001/**'
     branches: 
       - main
       - develop
