@@ -23,7 +23,8 @@ jobs:
     
     - name: test docker
       run: |
-        docker run -d --name app-runner -p 5000:5000 myapp:runner
+        CONTAINER_NAME=app-runner
+        docker run -d --name $CONTAINER_NAME -p 5000:5000 myapp:runner
         sleep 10
         curl -f http://localhost:5000/health
-        docker stop app-runner && docker rm app-runne
+        docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME
