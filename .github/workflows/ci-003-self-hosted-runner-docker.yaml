@@ -24,6 +24,7 @@ jobs:
     - name: test docker
       run: |
         CONTAINER_NAME=app-runner
+        docker rm $CONTAINER_NAME
         docker run -d --name $CONTAINER_NAME -p 5000:5000 myapp:runner
         sleep 10
         curl -f http://localhost:5000/health
